@@ -5,7 +5,7 @@ resource "aws_instance" "recoverable_instance" {
 
   tags {
     Environment = "${var.envtype}"
-    Name        = "${var.envname}-${var.envtype}-${var.service_name}-${format("%02d", count.index + 1)}"
+    Name        = "${var.envname}-${var.envtype}-${var.service_name}-${var.instance_number}"
     Service     = "${var.service_name}"
   }
 }
