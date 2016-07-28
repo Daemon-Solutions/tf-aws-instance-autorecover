@@ -1,8 +1,10 @@
 
 resource "aws_instance" "recoverable_instance" {
-  ami           = "${var.ami_id}"
-  instance_type = "${var.instance_type}"
-  user_data     = "${var.user_data}"
+  ami                    = "${var.ami_id}"
+  instance_type          = "${var.instance_type}"
+  user_data              = "${var.user_data}"
+  security_groups        = ["${split(",",var.security_groups)}"]
+  subnet_id              = "${var.subnet_id}"
 
   tags {
     Environment = "${var.envtype}"
