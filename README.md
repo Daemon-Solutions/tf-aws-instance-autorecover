@@ -21,5 +21,6 @@ module "instance_recovery" {
 * `aws_region` - The region in which the instance should be located
 * `instance_number` - Numerical suffix if creating multiple instances of this service
 * `instance_type` - The instnace type/size
+* `user_data` - The user data to provide when launching the instance.
 * `ami_id` - The id of the ami to use when creating the instance
 * `service_name` - The name of the service for which this instance is a member

@@ -2,6 +2,7 @@
 resource "aws_instance" "recoverable_instance" {
   ami           = "${var.ami_id}"
   instance_type = "${var.instance_type}"
+  user_data     = "${var.user_data}"
 
   tags {
     Environment = "${var.envtype}"
