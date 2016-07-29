@@ -5,6 +5,7 @@ resource "aws_instance" "recoverable_instance" {
   user_data              = "${var.user_data}"
   security_groups        = ["${split(",",var.security_groups)}"]
   subnet_id              = "${var.subnet_id}"
+  availability_zone      = "${var.availability_zone}"
 
   tags {
     Environment = "${var.envtype}"
