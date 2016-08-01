@@ -10,6 +10,7 @@ variable "ami_id"               {}
 variable "user_data"            {}
 variable "service_name"         {}
 variable "availability_zone"    {}
+variable "iam_instance_profile" {}
 
 variable "aws_region" {
   default = "eu-west-1"
