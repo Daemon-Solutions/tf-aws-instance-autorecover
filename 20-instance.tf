@@ -1,13 +1,13 @@
-
 resource "aws_instance" "recoverable_instance" {
-  ami                    = "${var.ami_id}"
-  instance_type          = "${var.instance_type}"
-  user_data              = "${var.user_data}"
-  security_groups        = ["${split(",",var.security_groups)}"]
-  subnet_id              = "${var.subnet_id}"
-  availability_zone      = "${var.availability_zone}"
-  iam_instance_profile   = "${var.iam_instance_profile}"
-  
+  ami                  = "${var.ami_id}"
+  instance_type        = "${var.instance_type}"
+  user_data            = "${var.user_data}"
+  security_groups      = ["${split(",",var.security_groups)}"]
+  subnet_id            = "${var.subnet_id}"
+  availability_zone    = "${var.availability_zone}"
+  iam_instance_profile = "${var.iam_instance_profile}"
+  private_ip           = "${var.private_ip}"
+
   tags {
     Environment = "${var.envtype}"
     Name        = "${var.envname}-${var.envtype}-${var.service_name}-${var.instance_number}"
@@ -26,6 +26,7 @@ resource "aws_cloudwatch_metric_alarm" "autorecover" {
   comparison_operator = "GreaterThanThreshold"
   threshold           = "0"
   metric_name         = "StatusCheckFailed_System"
+
   dimensions {
     InstanceId = "${aws_instance.recoverable_instance.id}"
   }
